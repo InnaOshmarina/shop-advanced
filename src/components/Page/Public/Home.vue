@@ -1,6 +1,6 @@
 <template>
     <div>
-        Home
+        Главная страница
     </div>
 </template>
 

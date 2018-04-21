@@ -1,6 +1,8 @@
 <template>
+
     <div>
-        Dashboard
+                   <div>Здесь будет информация по админке</div>
+
     </div>
 </template>
 
@@ -8,8 +10,8 @@
     import Vue from 'vue';
     import Component from 'vue-class-component';
 
+
     @Component({
-        name: 'dashboard',
 
     })
     export default class DashboardList extends Vue {

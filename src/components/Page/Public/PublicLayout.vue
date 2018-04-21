@@ -1,20 +1,37 @@
 <template>
     <div class="public-layout">
-        <router-view/>
+        <Header class="pb-1"></Header>
+        <b-container>
+            <router-view/>
+        </b-container>
+        <Footer class="mt-5"></Footer>
+
     </div>
 </template>
 
 <script>
     import Vue from 'vue';
     import Component from 'vue-class-component';
+    import Header from '../../Shared/Public/Header.vue';
+    import Footer from '../../Shared/Public/Footer.vue';
+
     @Component({
+        name: 'public-layout',
+        components: {
+            Header,
+            Footer
+        }
     })
     export default class PublicLayout extends Vue {
         constructor() {
             super();
         }
+        get signComplete() {
+            return this.$store.getters.getUser.signComplete;
+        }
     }
 </script>
 
 <style lang="scss" scoped>
+
 </style>

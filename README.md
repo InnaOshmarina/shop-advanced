@@ -2,7 +2,7 @@
 
 ``` bash
 # cloning
-git clone git@github.com:InnaOshmarina/shop-advanced.git <project_name>
+git clone https://git@github.com:InnaOshmarina/shop-advanced.git <project_name>
 cd <project_name>
 
 # install dependencies

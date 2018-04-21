@@ -3,8 +3,24 @@ import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-export default new Vuex.Store({
-  state: {},
-  mutations: {},
+const store = new Vuex.Store({
+  state: {
+      user: {
+          email: '',
+          signComplete: false,
+          uid: ''
+      }
+  },
+  getters: {
+      getUser(state) {
+          return state.user;
+      }
+  },
+  mutations: {
+      signIn(state, payload) {
+          state.user = payload;
+      }
+  },
   actions: {}
 });
+export default store
