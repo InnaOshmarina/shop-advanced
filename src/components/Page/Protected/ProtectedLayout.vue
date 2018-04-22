@@ -1,7 +1,7 @@
 <template>
     <div class="protected-layout">
         <header-second class="pb-5"></header-second>
-        <b-container fluid>
+        <b-container fluid class="content">
             <b-row>
                 <b-col lg="3" style="background-color:pink">
 
@@ -44,6 +44,15 @@
 </script>
 
 <style lang="scss" scoped>
+
+    .protected-layout {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    .content {
+        flex: 1 0 auto;
+    }
 
     .list-group a {
         background-color: pink;

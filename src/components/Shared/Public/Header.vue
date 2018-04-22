@@ -10,7 +10,7 @@
           <b-collapse is-nav id="nav_collapse">
                 <b-navbar-nav class="mr-auto">
                     <b-nav-item>
-                        <router-link :to="{ name: 'product-catalog' }">Каталог товаров</router-link>
+                        <router-link :to="{ name: 'product-catalog', params: { key: 'all' } }">Каталог товаров</router-link>
                     </b-nav-item>
 
                 </b-navbar-nav>

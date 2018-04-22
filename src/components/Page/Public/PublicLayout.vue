@@ -1,7 +1,7 @@
 <template>
     <div class="public-layout">
         <Header class="pb-1"></Header>
-        <b-container>
+        <b-container class="content">
             <router-view/>
         </b-container>
         <Footer class="mt-5"></Footer>
@@ -33,5 +33,13 @@
 </script>
 
 <style lang="scss" scoped>
+    .public-layout {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+    }
+    .content {
+        flex: 1 0 auto;
+    }
 
 </style>

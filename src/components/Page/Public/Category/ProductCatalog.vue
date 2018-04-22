@@ -3,14 +3,26 @@
         <b-row>
             <b-col lg="3" style="background-color:pink">
                 <div class="caption-category">Выберите нужную Вам категорию товаров:</div>
+                <b-list-group>
+                <b-list-group-item>
+                    <router-link :to="{ name: 'product-catalog', params: { key: 'all' } }">
+                       Все товары
+                    </router-link>
+                </b-list-group-item>
+                </b-list-group>
                 <b-list-group v-for="category in categories" :key="category['.key']">
 
                     <b-list-group-item>
-                        {{ category.nameCategory }}</b-list-group-item>
+                        <router-link :to="{ name: 'product-catalog', params: { key: category['.key'] } }">
+                            {{ category.name }}
+                        </router-link>
+                    </b-list-group-item>
+
                 </b-list-group>
+
             </b-col>
             <b-col lg="9">
-                <router-view/>
+                <product-listing :products="productsByCategory"></product-listing>
             </b-col>
         </b-row>
     </div>
@@ -19,17 +31,32 @@
 <script>
     import Vue from 'vue';
     import Component from 'vue-class-component';
-    import {categoryRef} from '../../../../api/firebase';
+    import {categoryRef, productRef} from '../../../../api/firebase';
+    import ProductListing from '../Product/ProductListing.vue';
 
     @Component({
         name: 'product-catalog',
         firebase: {
-            categories: categoryRef
+            categories: categoryRef,
+            products: productRef
+        },
+        components: {
+            ProductListing
         }
     })
     export default class ProductCatalog extends Vue {
         constructor() {
             super();
+        }
+
+        get productsByCategory() {
+            const ourId = this.$route.params.key;
+            if (ourId == 'all') {
+                return this.products;
+            }
+            const ourProducts = this.products.filter((Object) => Object.category == ourId);
+
+            return ourProducts;
         }
     }
 </script>

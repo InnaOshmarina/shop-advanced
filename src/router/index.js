@@ -28,11 +28,11 @@ const router = new Router({
     routes: [
         { path: '/', component: PublicLayout, name: 'public-layout',
             children: [
-                {path: 'home', component: Home, name: 'home'},
-                {path: 'product-catalog', component: ProductCatalog, name: 'product-catalog'},
-                // {path: 'products/:id_category', component: Products, name: 'products'},
-                // {path: 'productDetails/:id_product', component: ProductDetails, name: 'product-details'},
-                {path: 'sign-in', component: SignIn, name: 'sign-in'},
+                {path: '/home', component: Home, name: 'home'},
+                {path: '/product-catalog/:key', component: ProductCatalog, name: 'product-catalog'},
+                // {path: 'products/:category_id', component: Products, name: 'products'},
+                // {path: 'productDetails/:product_id', component: ProductDetails, name: 'product-details'},
+                {path: '/sign-in', component: SignIn, name: 'sign-in'},
                 {path: 'sign-up', component: SignUp, name: 'sign-up'},
                 {path: 'about-us', component: AboutUs, name: 'about-us'},
                 {path: 'contacts', component: Contacts, name: 'contacts'},
@@ -42,12 +42,12 @@ const router = new Router({
         },
         { path: '/admin', component: ProtectedLayout, name: 'protected-layout',
             children: [
-                {path: 'dashboard-list', component: DashboardList, name: 'dashboard-list'},
-                {path: 'category-list', component: CategoryList, name: 'category-list'},
-                {path: 'product-list', component: ProductList, name: 'product-list'},
-                {path: 'statistics', component: Statistics, name: 'statistics'},
-                {path: 'category-adding', component: CategoryAdding, name: 'category-adding'},
-                {path: 'product-adding', component: ProductAdding, name: 'product-adding'}
+                {path: '', component: DashboardList, name: 'dashboard-list'},
+                {path: '/category-list', component: CategoryList, name: 'category-list'},
+                {path: '/product-list', component: ProductList, name: 'product-list'},
+                {path: '/statistics', component: Statistics, name: 'statistics'},
+                {path: '/category-adding', component: CategoryAdding, name: 'category-adding'},
+                {path: '/product-adding', component: ProductAdding, name: 'product-adding'}
 
             ]
         }

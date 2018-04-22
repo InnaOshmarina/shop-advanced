@@ -9,12 +9,12 @@
                           label-class="font-weight-bold pt-0"
                           class="mb-0">
 
-                <b-form-select v-model="categoryProduct" class="mb-3">
+                <b-form-select v-model="category" class="mb-3">
                     <template slot="first">
                         <option :value="null" disabled>Выберите соответствующую категорию для товара</option>
                     </template>
-                    <option :value="option.nameCategory" v-for="option in categories">
-                        {{ option.nameCategory }}
+                    <option :value="option['.key']" v-for="option in categories">
+                        {{ option.name }}
                     </option>
                 </b-form-select>
 
@@ -23,7 +23,7 @@
                               class="pb-3">
                     <b-form-input id="input5"
                                   type="text"
-                                  v-model="nameProduct"
+                                  v-model="name"
                                   required
                                   placeholder="Имя товара">
                     </b-form-input>
@@ -33,7 +33,7 @@
                               label-for="input6"
                               class="pb-3">
                     <b-form-textarea id="input6"
-                                  v-model="descriptionProduct"
+                                  v-model="description"
                                   placeholder="Описание товара"
                                   :rows="5"
                                   :max-rows="50">
@@ -44,7 +44,7 @@
                               class="pb-3">
                     <b-form-input id="input7"
                                   type="text"
-                                  v-model="priceProduct"
+                                  v-model="price"
                                   placeholder="Цена товара">
                     </b-form-input>
                 </b-form-group>
@@ -61,8 +61,8 @@
 <script>
     import Vue from 'vue';
     import Component from 'vue-class-component';
-    import {categoryRef} from '../../../../api/firebase';
-    import {productRef} from '../../../../api/firebase';
+    import {categoryRef, productRef} from '../../../../api/firebase';
+
 
     @Component({
         name: 'product-adding',
@@ -74,19 +74,20 @@
     export default class ProductAdding extends Vue {
         constructor() {
             super();
-                this.categoryProduct = null;
-                this.nameProduct = '';
-                this.descriptionProduct = '';
-                this.priceProduct = '';
+                this.category = null;
+                this.name = '';
+                this.description = '';
+                this.price = '';
 
         }
         addProduct() {
-            productRef.push({ categoryProduct: this.categoryProduct, nameProduct: this.nameProduct, descriptionProduct: this.descriptionProduct, priceProduct: this.priceProduct, edit: false });
-            this.categoryProduct = '';
-            this.nameProduct = '';
-            this.descriptionProduct = '';
-            this.priceProduct = ''
+            productRef.push({ category: this.category, name: this.name, description: this.description, price: this.price, edit: false });
+            this.category = '';
+            this.name = '';
+            this.description = '';
+            this.price = ''
         }
+
     }
 </script>
 

@@ -14,7 +14,7 @@
                               class="pb-3">
                     <b-form-input id="input2"
                                   type="text"
-                                  v-model="nameCategory"
+                                  v-model="newCategory.name"
                                   required
                                   placeholder="Наименование категории">
                     </b-form-input>
@@ -23,7 +23,7 @@
                               label-for="input3"
                               class="pb-3">
                     <b-form-textarea id="input3"
-                                     v-model="descriptionCategory"
+                                     v-model="newCategory.description"
                                      placeholder="Описание категории"
                                      :rows="5"
                                      :max-rows="50">
@@ -53,14 +53,15 @@
     export default class CategoryAdding extends Vue {
         constructor() {
             super();
-                // idCategory: '',
-                this.nameCategory = '';
-                this.descriptionCategory = '';
+            this.newCategory = {
+                name: '',
+                description: ''
+            }
         }
         addCategory() {
-            categoryRef.push({ nameCategory: this.nameCategory, descriptionCategory: this.descriptionCategory, edit: false });
-            this.nameCategory = '';
-            this.descriptionCategory = '';
+            categoryRef.push({ ...this.newCategory, edit: false });
+            this.newCategory.name = '';
+            this.newCategory.description = ''
         }
     }
 </script>

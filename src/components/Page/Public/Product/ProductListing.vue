@@ -2,13 +2,13 @@
     <div>
         <b-row class="mt-5" v-for="(item, index) in products" :key="index">
             <b-col lg="9">
-                <h4><router-link :to="{ name: 'product-details', params: { id_product: item.id } }">
+                <h4><router-link :to="{ name: 'product-details', params: { product_id: item.id } }">
                     {{ item.name }}</router-link>
                 </h4>
-                <p>{{ item.description }}</p>
+                <p>{{ item.description}}</p>
             </b-col>
             <b-col lg="3">
-                <span>{{ item.price }} р.</span>
+                <span>{{ item.price}} р.</span>
             </b-col>
         </b-row>
         <hr>

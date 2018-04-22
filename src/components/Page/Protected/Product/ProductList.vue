@@ -23,11 +23,11 @@
 
                 </td>
                 <td>
-                    {{ product.categoryProduct }}
+                    {{ product.category }}
                 </td>
-                <td>{{ product.nameProduct }}</td>
-                <td>{{ product.descriptionProduct }}</td>
-                <td>{{ product.priceProduct }} р.</td>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price}} р.</td>
                 <td style="padding: 0.3rem; vertical-align: middle">
                     <button type="button"
                             class="btn btn-danger btn-sm"
@@ -46,15 +46,15 @@
             <tr v-else>
                 <td></td>
                 <td>
-                    <select v-model="product.categoryProduct">
-                        <option :value="option.nameCategory" v-for="option in categories">
-                            {{ option.nameCategory }}
+                    <select v-model="product.category">
+                        <option :value="option['.key']" v-for="option in categories">
+                            {{ option.name}}
                         </option>
                     </select>
                 </td>
-                <td><input type="text" v-model="product.nameProduct"></td>
-                <td><textarea rows="5" cols="70" v-model="product.descriptionProduct"></textarea></td>
-                <td><input type="text" v-model="product.priceProduct"> р.</td>
+                <td><input type="text" v-model="product.name"></td>
+                <td><textarea rows="5" cols="70" v-model="product.description"></textarea></td>
+                <td><input type="text" v-model="product.price"> р.</td>
                 <td style="padding: 0.3rem; vertical-align: middle">
                     <button type="button"
                             class="btn btn-success btn-sm"
@@ -107,7 +107,7 @@
 
         saveEditingProduct(article) {
             const key = article['.key'];
-            productRef.child(key).set({ categoryProduct: article.categoryProduct, nameProduct: article.nameProduct, descriptionProduct: article.descriptionProduct, priceProduct: article.priceProduct, edit: false });
+            productRef.child(key).set({ category: article.category, name: article.name, description: article.description, price: article.price, edit: false });
         }
     }
 </script>

@@ -17,8 +17,8 @@
             <tbody v-for="category in categories" :key="category['.key']">
             <tr v-if="!category.edit">
                 <td></td>
-                <td>{{ category.nameCategory }}</td>
-                <td>{{ category.descriptionCategory }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.description }}</td>
                 <td style="padding: 0.3rem; vertical-align: middle">
                     <button type="button"
                             class="btn btn-danger btn-sm"
@@ -37,8 +37,8 @@
             </tr>
             <tr v-else>
                 <td></td>
-                <td><textarea rows="5" cols="70" v-model="category.nameCategory"></textarea></td>
-                <td><input type="text" v-model="category.descriptionCategory"></td>
+                <td><textarea rows="5" cols="70" v-model="category.name"></textarea></td>
+                <td><input type="text" v-model="category.description"></td>
                 <td style="padding: 0.3rem; vertical-align: middle">
                     <button type="button"
                             class="btn btn-success btn-sm"
@@ -93,7 +93,7 @@
 
         saveEditingCategory(revision) {
             const keyC = revision['.key'];
-            categoryRef.child(keyC).set({ nameCategory: revision.nameCategory, descriptionCategory: revision.descriptionCategory, edit: false });
+            categoryRef.child(keyC).set({ name: revision.name, description: revision.description, edit: false });
         }
     }
 </script>
