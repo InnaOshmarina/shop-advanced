@@ -9,7 +9,7 @@
                           label-class="font-weight-bold pt-0"
                           class="mb-0">
 
-                <b-form-select v-model="category" class="mb-3">
+                <b-form-select v-model="newProduct.category" class="mb-3">
                     <template slot="first">
                         <option :value="null" disabled>Выберите соответствующую категорию для товара</option>
                     </template>
@@ -23,7 +23,7 @@
                               class="pb-3">
                     <b-form-input id="input5"
                                   type="text"
-                                  v-model="name"
+                                  v-model="newProduct.name"
                                   required
                                   placeholder="Имя товара">
                     </b-form-input>
@@ -33,7 +33,7 @@
                               label-for="input6"
                               class="pb-3">
                     <b-form-textarea id="input6"
-                                  v-model="description"
+                                  v-model="newProduct.description"
                                   placeholder="Описание товара"
                                   :rows="5"
                                   :max-rows="50">
@@ -44,7 +44,7 @@
                               class="pb-3">
                     <b-form-input id="input7"
                                   type="text"
-                                  v-model="price"
+                                  v-model="newProduct.price"
                                   placeholder="Цена товара">
                     </b-form-input>
                 </b-form-group>
@@ -74,18 +74,20 @@
     export default class ProductAdding extends Vue {
         constructor() {
             super();
-                this.category = null;
-                this.name = '';
-                this.description = '';
-                this.price = '';
+            this.newProduct = {
+                category: null,
+                name: '',
+                description: '',
+                price: ''
+            }
 
         }
         addProduct() {
-            productRef.push({ category: this.category, name: this.name, description: this.description, price: this.price, edit: false });
-            this.category = '';
-            this.name = '';
-            this.description = '';
-            this.price = ''
+            productRef.push({ ...this.newProduct, edit: false });
+            this.newProduct.category = '';
+            this.newProduct.name = '';
+            this.newProduct.description = '';
+            this.newProduct.price = ''
         }
 
     }

@@ -4,8 +4,7 @@ import Router from "vue-router";
 import PublicLayout from '../components/Page/Public/PublicLayout.vue';
 import Home from '../components/Page/Public/Home.vue';
 import ProductCatalog from '../components/Page/Public/Category/ProductCatalog.vue';
-// import Products from '../components/Page/Public/Product/Products.vue';
-// import ProductDetails from '../components/Page/Public/Product/ProductDetails.vue';
+import ProductDetails from '../components/Page/Public/Product/ProductDetails.vue';
 import SignIn from '../components/Page/Public/SignIn.vue';
 import SignUp from '../components/Page/Public/SignUp.vue';
 import AboutUs from '../components/Page/Public/AboutUs.vue';
@@ -30,8 +29,7 @@ const router = new Router({
             children: [
                 {path: '/home', component: Home, name: 'home'},
                 {path: '/product-catalog/:key', component: ProductCatalog, name: 'product-catalog'},
-                // {path: 'products/:category_id', component: Products, name: 'products'},
-                // {path: 'productDetails/:product_id', component: ProductDetails, name: 'product-details'},
+                {path: 'product-details/:product_key', component: ProductDetails, name: 'product-details'},
                 {path: '/sign-in', component: SignIn, name: 'sign-in'},
                 {path: 'sign-up', component: SignUp, name: 'sign-up'},
                 {path: 'about-us', component: AboutUs, name: 'about-us'},

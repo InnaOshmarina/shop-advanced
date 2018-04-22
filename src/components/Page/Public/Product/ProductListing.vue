@@ -1,14 +1,14 @@
 <template>
     <div>
-        <b-row class="mt-5" v-for="(item, index) in products" :key="index">
+        <b-row class="mt-5" v-for="product in products" :key="product['.key']">
             <b-col lg="9">
-                <h4><router-link :to="{ name: 'product-details', params: { product_id: item.id } }">
-                    {{ item.name }}</router-link>
-                </h4>
-                <p>{{ item.description}}</p>
+                <h5><router-link :to="{ name: 'product-details', params: { product_key: product['.key'] } }">
+                    {{ product.name }}</router-link>
+                </h5>
+                <p>{{ product.description}}</p>
             </b-col>
             <b-col lg="3">
-                <span>{{ item.price}} р.</span>
+                <span>{{ product.price}} р.</span>
             </b-col>
         </b-row>
         <hr>
@@ -24,7 +24,7 @@
 </script>
 
 <style lang="scss" scoped>
-    h4 {
+    h5 {
         font-weight: 600;
         a {
             color: #000;
@@ -32,11 +32,7 @@
     }
 
     span {
-        font-size: 1.3rem;
-        font-weight: 700;
+        font-weight: 600;
     }
 
-    .col-lg-3 {
-        margin-bottom: 1.125rem;
-    }
 </style>

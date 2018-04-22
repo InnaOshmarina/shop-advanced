@@ -4,12 +4,13 @@
             <b-col lg="3" style="background-color:pink">
                 <div class="caption-category">Выберите нужную Вам категорию товаров:</div>
                 <b-list-group>
-                <b-list-group-item>
-                    <router-link :to="{ name: 'product-catalog', params: { key: 'all' } }">
-                       Все товары
-                    </router-link>
-                </b-list-group-item>
+                    <b-list-group-item>
+                        <router-link :to="{ name: 'product-catalog', params: { key: 'all' } }">
+                           Все товары
+                        </router-link>
+                    </b-list-group-item>
                 </b-list-group>
+
                 <b-list-group v-for="category in categories" :key="category['.key']">
 
                     <b-list-group-item>
