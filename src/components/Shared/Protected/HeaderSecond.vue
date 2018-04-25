@@ -26,7 +26,7 @@
 <script>
     import Vue from 'vue';
     import Component from 'vue-class-component';
-    import ItemDropdown from '../../Shared/Protected/ItemDropdown.vue';
+    import ItemDropdown from './User/ItemDropdown.vue';
 
     @Component({
         name: 'header-second',
@@ -37,9 +37,7 @@
     export default class HeaderSecond extends Vue {
         constructor() {
             super();
-
         }
-        
     }
 
 </script>

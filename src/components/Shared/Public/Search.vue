@@ -3,11 +3,13 @@
       <b-container>       
           <b-nav-form>
             <div class="for-nav-form">
-                <b-form-input class="mr-sm-2" type="text" placeholder="Введите название товара">
-                              <!--v-model="searchProduct"-->
+                <b-form-input class="mr-sm-2" type="text" placeholder="Введите название товара"
+                              v-model="searchProduct">
+
                 </b-form-input>                
-                <b-button variant="outline-primary" class="my-2 my-sm-0" type="submit">
-                          <!--@click.prevent="filteredProduct"-->
+                <b-button variant="outline-primary" class="my-2 my-sm-0" type="submit"
+                          @click.prevent="filteredProduct">
+
                   Найти
                 </b-button>                
             </div>
@@ -25,12 +27,12 @@
     export default class Search extends Vue {
         constructor() {
             super();
-            // this.searchProduct = '';
+            this.searchProduct = '';
         }
 
-        // filteredProduct() {
-        //     this.$router.push({ name: 'search-results', params: { q: this.searchProduct } });
-        // }
+        filteredProduct() {
+            this.$router.push({ name: 'result-of-search', params: { q: this.searchProduct } });
+        }
     }
 </script>
 

@@ -16,11 +16,19 @@
 </template>
 
 <script>
-    export default {
+    import Vue from 'vue';
+    import Component from 'vue-class-component';
+
+    @Component({
         name: 'product-listing',
         props: ['products']
-
+    })
+    export default class Productlisting extends Vue {
+        constructor() {
+            super();
+        }
     }
+
 </script>
 
 <style lang="scss" scoped>

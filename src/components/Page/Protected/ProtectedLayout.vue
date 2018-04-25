@@ -3,7 +3,7 @@
         <header-second class="pb-5"></header-second>
         <b-container fluid class="content">
             <b-row>
-                <b-col lg="3" style="background-color:pink">
+                <b-col lg="3">
 
                     <b-list-group>
 
@@ -53,9 +53,12 @@
     .content {
         flex: 1 0 auto;
     }
+    .col-lg-3 {
+        background-color: rgb(195, 188, 199)
+    }
 
     .list-group a {
-        background-color: pink;
+        background-color: rgb(195, 188, 199);
         &:focus, &.active {
             color: #000;
             background-color: deepskyblue;

@@ -5,8 +5,9 @@ import PublicLayout from '../components/Page/Public/PublicLayout.vue';
 import Home from '../components/Page/Public/Home.vue';
 import ProductCatalog from '../components/Page/Public/Category/ProductCatalog.vue';
 import ProductDetails from '../components/Page/Public/Product/ProductDetails.vue';
-import SignIn from '../components/Page/Public/SignIn.vue';
-import SignUp from '../components/Page/Public/SignUp.vue';
+import SignIn from '../components/Page/Public/User/SignIn.vue';
+import SignUp from '../components/Page/Public/User/SignUp.vue';
+import ResultOfSearch from '../components/Page/Public/Product/ResultOfSearch.vue';
 import AboutUs from '../components/Page/Public/AboutUs.vue';
 import Contacts from '../components/Page/Public/Contacts.vue';
 import ContactForm from '../components/Page/Public/ContactForm.vue';
@@ -32,6 +33,7 @@ const router = new Router({
                 {path: 'product-details/:product_key', component: ProductDetails, name: 'product-details'},
                 {path: '/sign-in', component: SignIn, name: 'sign-in'},
                 {path: 'sign-up', component: SignUp, name: 'sign-up'},
+                {path: 'result-of-search/:q', component: ResultOfSearch, name: 'result-of-search'},
                 {path: 'about-us', component: AboutUs, name: 'about-us'},
                 {path: 'contacts', component: Contacts, name: 'contacts'},
                 {path: 'contact-form', component: ContactForm, name: 'contact-form'}
