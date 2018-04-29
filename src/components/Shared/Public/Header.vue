@@ -15,7 +15,7 @@
 
                 </b-navbar-nav>
                 <!-- Right aligned nav items -->
-                <b-navbar-nav class="ml-auto" v-if="!signComplete">
+                <b-navbar-nav class="ml-auto" v-if="!currentUser">
 
                     <b-nav-item right>
                       <router-link :to="{ name: 'sign-in' }" @click="switchSign('sign-in')">Вход</router-link>
@@ -52,8 +52,8 @@
 
         }
 
-        get signComplete() {
-            return this.$store.getters.getUser.signComplete;
+        get currentUser() {
+            return this.$store.getters.getUser;
         }
 
         switchSign(currentSign) {

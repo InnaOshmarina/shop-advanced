@@ -6,7 +6,7 @@
             </template>
 
             <b-dropdown-item href="#">Мой профиль</b-dropdown-item>
-            <b-dropdown-item href="#" @click="logout">Выход</b-dropdown-item>
+            <b-dropdown-item href="#" @click="onLogout">Выход</b-dropdown-item>
         </b-dropdown>
     </div>
 </template>
@@ -14,36 +14,25 @@
 <script>
     import Vue from 'vue';
     import Component from 'vue-class-component';
-    import firebase from 'firebase';
 
     @Component({
         name: 'item-dropdown'
     })
     export default class ItemDropdown extends Vue {
+
         constructor() {
             super();
-            this.currentUser = false;
-        }
-        created() {
-            if (firebase.auth().currentUser) {
-                this.currentUser = firebase.auth().currentUser.email;
-            }
         }
 
-        logout() {
-            firebase.auth().signOut()
-                .then( () => {
-                    const output = {
-                        email: false,
-                        signComplete: false,
-                        uid: false
-                    };
-                    // мутация:
-                    console.log(output);
-                    this.$store.commit('signIn', output);
-                    this.$router.push('/sign-in');
-                });
+        get currentUser () {
+            return this.$store.getters.getUser.email;
         }
+
+        onLogout () {
+            this.$store.dispatch('logout');
+            this.$router.push('/sign-in')
+        }
+
     }
 
 </script>
@@ -62,7 +51,6 @@
             color: #000;
         }
     }
-
 
     .dropdown-menu a {
         text-decoration: none;

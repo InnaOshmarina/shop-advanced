@@ -1,6 +1,6 @@
 <template>
   <div class="for-sign-in">
-      <form class="mt-5" @submit.prevent="enterUser" v-if="!signComplete">
+      <form class="mt-5" @submit.prevent="enterUser">
         <div class="form-group">
           <label for="email">Ваш email:</label>
           <input type="email" id="email" class="form-control" placeholder="Введите email:" required v-model="user.email">
@@ -11,14 +11,13 @@
         </div>
         <button type="submit" class="btn btn-primary">Войти</button>
       </form>
-      <div v-else>
-          <div class="alert alert-success mt-5" role="alert" v-if="signSuccess">
-            <strong>Поздравляю!</strong> Вы вошли в систему.
-          </div>
-          <div class="alert alert-danger mt-5" role="alert" v-if="signError">
-           Вы ввели неверный email или пароль.
-          </div>
+      <div class="alert alert-success mt-5" role="alert" v-if="signSuccess">
+        <strong>Поздравляю!</strong> Вы вошли в систему.
       </div>
+      <div class="alert alert-danger mt-5" role="alert" v-if="signError">
+         Вы ввели неверный email или пароль.
+      </div>
+      <loading :isLoading="loader"></loading>
   </div>
 </template>
 
@@ -26,8 +25,14 @@
     import Vue from 'vue';
     import Component from 'vue-class-component';
     import firebase from 'firebase';
+    import { setItemStorage } from '@/helpers/storageHelper';
+    import { USER_DATA } from "@/constants";
+    import Loading from '@/components/Shared/Loading';
 
       @Component({
+          components: {
+              Loading
+          }
       })
       export default class SignIn extends Vue {
           constructor() {
@@ -41,29 +46,35 @@
               };
           }
           enterUser() {
+              this.$store.commit('setIsLoading');
+
             firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password)
                 .then( response => {
                   // console.log(response);
-                  const sett = {
+
+                  const user = {
                     email: response.email,
                     signComplete: true,
                     uid: response.uid
                   };
-                  console.log(sett);
-                  console.log(this.$store);
+                    setItemStorage(USER_DATA, user);
+
                   this.signError = false;
                   this.signSuccess = true;
                   // мутация:
-                  this.$store.commit('signIn', sett);
+                  this.$store.commit('signIn', user);
                   this.$router.push('/admin');
+                  this.$store.commit('clearLoading');
                 })
                 .catch(error => {
                   this.signError = true;
+                    this.$store.commit('clearLoading');
                 })
 
           }
-          get signComplete() {
-              return this.$store.getters.getUser.signComplete;
+
+          get loader() {
+              return this.$store.getters.getIsLoading;
           }
       }
 </script>
