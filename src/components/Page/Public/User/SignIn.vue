@@ -17,7 +17,7 @@
       <div class="alert alert-danger mt-5" role="alert" v-if="signError">
          Вы ввели неверный email или пароль.
       </div>
-      <loading :isLoading="loader"></loading>
+      <loader :isLoader="loader"></loader>
   </div>
 </template>
 
@@ -27,11 +27,11 @@
     import firebase from 'firebase';
     import { setItemStorage } from '@/helpers/storageHelper';
     import { USER_DATA } from "@/constants";
-    import Loading from '@/components/Shared/Loading';
+    import Loader from '@/components/Shared/Loader';
 
       @Component({
           components: {
-              Loading
+              Loader
           }
       })
       export default class SignIn extends Vue {
@@ -46,7 +46,7 @@
               };
           }
           enterUser() {
-              this.$store.commit('setIsLoading');
+              this.$store.commit('setIsLoader');
 
             firebase.auth().signInWithEmailAndPassword(this.user.email, this.user.password)
                 .then( response => {
@@ -64,17 +64,17 @@
                   // мутация:
                   this.$store.commit('signIn', user);
                   this.$router.push('/admin');
-                  this.$store.commit('clearLoading');
+                  this.$store.commit('clearLoader');
                 })
                 .catch(error => {
                   this.signError = true;
-                    this.$store.commit('clearLoading');
+                  this.$store.commit('clearLoader');
                 })
 
           }
 
           get loader() {
-              return this.$store.getters.getIsLoading;
+              return this.$store.getters.getIsLoader;
           }
       }
 </script>

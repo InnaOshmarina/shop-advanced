@@ -18,11 +18,11 @@
                 <b-navbar-nav class="ml-auto" v-if="!currentUser">
 
                     <b-nav-item right>
-                      <router-link :to="{ name: 'sign-in' }" @click="switchSign('sign-in')">Вход</router-link>
+                      <router-link :to="{ name: 'sign-in' }">Вход</router-link>
                     </b-nav-item>
 
                     <b-nav-item right class="for-sign-up">
-                      <router-link :to="{ name: 'sign-up' }" @click="switchSign('sign-up')">Регистрация</router-link>
+                      <router-link :to="{ name: 'sign-up' }">Регистрация</router-link>
                     </b-nav-item>
 
                 </b-navbar-nav>
@@ -49,15 +49,10 @@
     export default class Header extends Vue {
         constructor() {
             super();
-
         }
 
         get currentUser() {
             return this.$store.getters.getUser;
-        }
-
-        switchSign(currentSign) {
-              this.sign = currentSign;
         }
     }
 
