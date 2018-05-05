@@ -3,6 +3,21 @@
       <h4 class="mt-5">Регистрация нового пользователя</h4>
 
       <form class="mt-4" @submit.prevent="registerUser" v-if="show">
+          <!--<div class="form-group">-->
+              <!--<label for="login_name">Ваш логин (может содержать только цифры и латинские буквы):</label>-->
+              <!--&lt;!&ndash; с помощью v-model соединяем импуты с данными&ndash;&gt;-->
+              <!--<input type="text" id="login_name" class="form-control" placeholder="Введите логин:" required v-model="user.login_name">-->
+          <!--</div>-->
+          <!--<div class="form-group">-->
+              <!--<label for="first_name">Ваше имя:</label>-->
+              <!--&lt;!&ndash; с помощью v-model соединяем импуты с данными&ndash;&gt;-->
+              <!--<input type="text" id="first_name" class="form-control" placeholder="Введите Ваше имя:" required v-model="user.first_name">-->
+          <!--</div>-->
+          <!--<div class="form-group">-->
+              <!--<label for="last_name">Ваша фамилия:</label>-->
+              <!--&lt;!&ndash; с помощью v-model соединяем импуты с данными&ndash;&gt;-->
+              <!--<input type="text" id="last_name" class="form-control" placeholder="Введите Вашу фамилию:" required v-model="user.last_name">-->
+          <!--</div>-->
           <div class="form-group">
             <label for="email">Ваш email:</label>
             <!-- с помощью v-model соединяем импуты с данными-->

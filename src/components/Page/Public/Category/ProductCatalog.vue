@@ -1,7 +1,7 @@
 <template>
     <div class="product-catalog">
         <b-row>
-            <b-col lg="3" style="background-color:pink">
+            <b-col lg="3">
                 <div class="caption-category">Выберите нужную Вам категорию товаров:</div>
                 <b-list-group>
                     <b-list-group-item>
@@ -63,8 +63,8 @@
 </script>
 
 <style lang="scss" scoped>
-    .category-listing {
-        font-size: 1rem;
+    div .col-lg-3 {
+        background-color: lightgray;
     }
     div.caption-category {
         font-size: 0.8rem;

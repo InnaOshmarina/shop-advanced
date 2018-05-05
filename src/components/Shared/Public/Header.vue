@@ -11,6 +11,9 @@
                 <b-navbar-nav class="mr-auto">
                     <b-nav-item>
                         <router-link :to="{ name: 'product-catalog', params: { key: 'all' } }">Каталог товаров</router-link>
+                        <router-link :to="{ name: 'shopping-cart' }">
+                            <i class="fas fa-shopping-basket"/>&nbsp;Корзина
+                        </router-link>
                     </b-nav-item>
 
                 </b-navbar-nav>
@@ -54,6 +57,7 @@
         get currentUser() {
             return this.$store.getters.getUser;
         }
+
     }
 
 </script>
@@ -78,7 +82,11 @@
   .nav-item a {
     text-decoration: none;
     color: #000;
-    margin-right: 1.2rem;
+    margin-right: 1.4rem;
+      svg {
+          color: gray;
+          font-size: 1.3rem;
+      }
   }
 
   .ml-auto .for-sign-up a {

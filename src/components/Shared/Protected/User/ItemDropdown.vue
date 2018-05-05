@@ -5,7 +5,8 @@
                 <i class="fas fa-user"></i> <span>{{currentUser}}</span>
             </template>
 
-            <b-dropdown-item href="#">Мой профиль</b-dropdown-item>
+            <b-dropdown-item>
+                <router-link :to="{ name: 'profile' }">Мой профиль</router-link></b-dropdown-item>
             <b-dropdown-item href="#" @click="onLogout">Выход</b-dropdown-item>
         </b-dropdown>
     </div>
