@@ -32,7 +32,7 @@ const router = new Router({
       component: PublicLayout,
       name: "public-layout",
       children: [
-        { path: "/home", component: Home, name: "home" },
+        { path: "/", component: Home, name: "home" },
         {
           path: "/product-catalog/:key",
           component: ProductCatalog,

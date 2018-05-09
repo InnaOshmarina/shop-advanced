@@ -1,50 +1,53 @@
 <template>
     <div class="shopping-cart">
         <h3>Оформление заказа</h3>
-        <table class="table mt-3">
-            <thead>
-                <tr class="header">
-                    <th scope="col">Товар</th>
-                    <th scope="col">Цена</th>
-                    <th></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr v-for="product in buyProduct" :key="product['.key']">
-                    <td> {{ product.name }}</td>
-                    <td> {{ product.price }}</td>
-                    <td>
-                        <button type="button" class="btn"
-                                @click.prevent="removeFromCart(product['.key'])">
-                           <i class="far fa-trash-alt"/>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
+        <div v-if="buyProducts.length > 0">
+            <table class="table mb-5">
+                <thead>
+                    <tr class="header text-center">
+                        <th style="width:50%">Товар</th>
+                        <th style="width:10%">Цена, руб.</th>
+                        <th style="width:8%">Количество</th>
+                        <th style="width:22%">Сумма, руб.</th>
+                        <th style="width:10%"></th>
+                    </tr>
+                </thead>
+                <cart-item :products="buyProducts"></cart-item>
+             </table>
+            <button type="button" class="btn btn-danger"
+                    @click="deleteOrder">Удалить заказ
+            </button>
+        </div>
+        <div class="empty" v-else>
+            <p>Ваша корзина пуста.</p>
+            <p>Для оформления заказа необходимо выбрать хотя бы один товар.</p>
+        </div>
     </div>
 </template>
 
 <script>
     import Vue from 'vue';
     import Component from 'vue-class-component';
+    import CartItem from './CartItem.vue';
 
     @Component({
-
+      components: {
+          CartItem
+      }
     })
     export default class ShoppingCart extends Vue {
         constructor() {
             super();
         }
 
-        get buyProduct () {
+        get buyProducts() {
+            // console.log(this.$store.getters.getProduct);
             return this.$store.getters.getProduct;
         }
-
-        removeFromCart(productItem) {
-            this.$store.commit('removeProductFromCart', productItem);
+        deleteOrder() {
+            this.$store.commit('clearCart');
+            // window.location.reload()
         }
-
     }
 </script>
 
@@ -52,6 +55,10 @@
     .shopping-cart {
         font-size: 0.875rem;
         background-color: whitesmoke;
+        .empty {
+            font-size: 1.125rem;
+            margin-left: 1rem;
+        }
     }
     h3 {
         text-align: center;
@@ -59,9 +66,6 @@
     }
     .header {
         font-size: 1rem;
-    }
-    button {
-        background-color: #d9534f;
     }
 
 </style>

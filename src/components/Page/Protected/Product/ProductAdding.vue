@@ -48,10 +48,20 @@
                                   placeholder="Цена товара">
                     </b-form-input>
                 </b-form-group>
-                <input type="submit"
-                       class="btn btn-warning mr-3 mb-1"
-                       value="Добавить товар"
-                       @click.prevent="addProduct()">
+            <!--<b-form-group label="Количество:"-->
+                          <!--label-for="input8"-->
+                          <!--class="pb-3">-->
+                <!--<b-form-input id="input8"-->
+                              <!--type="number"-->
+                              <!--min="0"-->
+                              <!--v-model="newProduct.stock"-->
+                              <!--placeholder="Количество">-->
+                <!--</b-form-input>-->
+            <!--</b-form-group>-->
+            <input type="submit"
+                   class="btn btn-warning mr-3 mb-1"
+                   value="Добавить товар"
+                   @click.prevent="addProduct()">
             </b-form-group>
         </b-card>
 
@@ -78,7 +88,8 @@
                 category: null,
                 name: '',
                 description: '',
-                price: ''
+                price: '',
+               // stock: ''
             }
 
         }
@@ -87,7 +98,8 @@
             this.newProduct.category = '';
             this.newProduct.name = '';
             this.newProduct.description = '';
-            this.newProduct.price = ''
+            this.newProduct.price = '';
+            // this.newProduct.stock = ''
         }
 
     }

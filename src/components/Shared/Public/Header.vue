@@ -12,8 +12,17 @@
                     <b-nav-item>
                         <router-link :to="{ name: 'product-catalog', params: { key: 'all' } }">Каталог товаров</router-link>
                         <router-link :to="{ name: 'shopping-cart' }">
-                            <i class="fas fa-shopping-basket"/>&nbsp;Корзина
+                            <div v-if="totalNumbers" class="numerical-condition">
+                                <div class="svg"><i class="fas fa-shopping-basket"/></div>
+                                <div class="figure">
+                                    <p>{{ totalNumbers }}</p>
+                                </div>
+                            </div>
+                            <div v-else class="numerical-condition">
+                                <div class="svg"><i class="fas fa-shopping-basket"/></div>
+                            </div>
                         </router-link>
+
                     </b-nav-item>
 
                 </b-navbar-nav>
@@ -58,6 +67,10 @@
             return this.$store.getters.getUser;
         }
 
+        get totalNumbers() {
+            return this.$store.getters.getQuantities;
+        }
+
     }
 
 </script>
@@ -80,14 +93,42 @@
   }
 
   .nav-item a {
-    text-decoration: none;
-    color: #000;
-    margin-right: 1.4rem;
-      svg {
-          color: gray;
-          font-size: 1.3rem;
-      }
+      text-decoration: none;
+      color: #000;
+      margin-right: 1.8rem;
   }
+
+  div .numerical-condition {
+      display: inline-block;
+      width: 4rem;
+      height: 1.8rem;
+      position: relative;
+  }
+    .svg {
+        position: absolute;
+        left: 0;
+        bottom: -0.3rem;
+        color: gray;
+        svg {
+            font-size: 1.3rem;
+        }
+    }
+
+    .figure {
+        position: absolute;
+        top: 1.4rem;
+        right: 3rem;
+        width: 1.5rem;
+        height: 1.5rem;
+        background: darkblue;
+        border-radius: 50%;
+        p {
+            color: #fff;
+            font-size: 0.8rem;
+            text-align: center;
+            vertical-align: middle;
+        }
+    }
 
   .ml-auto .for-sign-up a {
     margin-right: 0;

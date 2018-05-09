@@ -6,8 +6,8 @@ export const initialUserState = {
   uid: ""
 };
 
-export const productInCart = {
-  name: "",
-  description: "",
-  price: ""
+export const initialCartState = {
+  added: []
 };
+
+

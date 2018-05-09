@@ -14,7 +14,8 @@
                 <b-list-group v-for="category in categories" :key="category['.key']">
 
                     <b-list-group-item>
-                        <router-link :to="{ name: 'product-catalog', params: { key: category['.key'] } }">
+                        <router-link :to="{ name: 'product-catalog', params: { key: category['.key'] } }"
+                                     :style= "{ color: activeColor }" @click.prevent="changeColor">
                             {{ category.name }}
                         </router-link>
                     </b-list-group-item>
@@ -48,6 +49,8 @@
     export default class ProductCatalog extends Vue {
         constructor() {
             super();
+            this.activeColor = ''
+
         }
 
         get productsByCategory() {
@@ -58,6 +61,11 @@
             const ourProducts = this.products.filter((Object) => Object.category == ourId);
 
             return ourProducts;
+        }
+
+        changeColor() {
+            this.activeColor = 'red';
+            console.log('inna')
         }
     }
 </script>
@@ -71,5 +79,9 @@
         margin-bottom: 1rem;
         font-weight: 700;
     }
+    /*div .list-group-item a:checked {*/
+        /*color: green;*/
+        /*font-weight: 800;*/
+    /*}*/
 
 </style>

@@ -7,8 +7,7 @@ import {
   getItemStorage,
   removeItemStorage
 } from "../helpers/storageHelper";
-import { USER_DATA } from "../constants";
-import { initialUserState } from "../constants";
+import { USER_DATA, initialUserState, initialCartState } from "../constants";
 
 Vue.use(Vuex);
 
@@ -16,9 +15,7 @@ export default new Vuex.Store({
   state: {
     user: initialUserState,
     isLoader: false,
-    cart: {
-      added: []
-    }
+    cart: initialCartState
   },
 
   getters: {
@@ -32,6 +29,19 @@ export default new Vuex.Store({
     },
     getProduct: state => {
       return state.cart.added;
+    },
+    getQuantities: state => {
+      let quantities = 0;
+      state.cart.added.map(productItem => (quantities += productItem.quantity));
+      return quantities;
+    },
+    getFullPrice: state => {
+      let fullPrice = 0;
+      state.cart.added.map(
+        productItem =>
+          (fullPrice += parseFloat(productItem.price) * productItem.quantity)
+      );
+      return fullPrice;
     }
   },
 
@@ -49,11 +59,24 @@ export default new Vuex.Store({
       state.isLoader = false;
     },
     addProductToCart(state, productItem) {
-      state.cart.added.push(productItem);
+      const record = state.cart.added.find(
+        Object => Object[".key"] === productItem[".key"]
+      );
+      if (!record) {
+        state.cart.added.push({
+          ...productItem,
+          quantity: 1
+        });
+      } else {
+        record.quantity++;
+      }
+    },
+    clearCart(state) {
+      state.cart.added = [];
     },
     removeProductFromCart(state, productItem) {
       state.cart.added = state.cart.added.filter(
-        Object => Object[".key"] !== productItem
+        Object => Object[".key"] !== productItem[".key"]
       );
     }
   },

@@ -13,6 +13,7 @@
                 <th>Имя</th>
                 <th>Описание</th>
                 <th>Цена</th>
+                <!--<td>Кол-во</td>-->
                 <td></td>
                 <td></td>
             </tr>
@@ -28,6 +29,7 @@
                 <td>{{ product.name }}</td>
                 <td>{{ product.description }}</td>
                 <td>{{ product.price}} р.</td>
+                <!--<td>{{ product.stock}}</td>-->
                 <td style="padding: 0.3rem; vertical-align: middle">
                     <button type="button"
                             class="btn btn-danger btn-sm"
@@ -55,6 +57,7 @@
                 <td><input type="text" v-model="product.name"></td>
                 <td><textarea rows="5" cols="70" v-model="product.description"></textarea></td>
                 <td><input type="text" v-model="product.price"> р.</td>
+                <!--<td><input type="number" min="0" v-model="product.stock"></td>-->
                 <td style="padding: 0.3rem; vertical-align: middle">
                     <button type="button"
                             class="btn btn-success btn-sm"
