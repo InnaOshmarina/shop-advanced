@@ -5,8 +5,8 @@
             <table class="table mb-5">
                 <thead>
                     <tr class="header text-center">
-                        <th style="width:50%">Товар</th>
-                        <th style="width:10%">Цена, руб.</th>
+                        <th style="width:40%">Товар</th>
+                        <th style="width:20%">Цена, руб.</th>
                         <th style="width:8%">Количество</th>
                         <th style="width:22%">Сумма, руб.</th>
                         <th style="width:10%"></th>

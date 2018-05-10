@@ -11,7 +11,7 @@
                 <b-col lg="3" class="d-flex align-items-end flex-column">
                         <span >{{ product.price}} р.</span>
                         <button type="button" class="btn btn-warning btn-sm mt-auto"
-                                @click.prevent="addToCart(product)">
+                                @click.prevent="addToCart">
                             <i class="fas fa-cart-arrow-down"/>
                             <span>&nbsp;&nbsp;В корзину</span>
                         </button>
@@ -28,14 +28,25 @@
 
     @Component({
         name: 'product-listing',
-        props: ['products']
+        props: ['products', 'product']
     })
     export default class ProductListing extends Vue {
         constructor() {
             super();
         }
-        addToCart(productItem) {
-            this.$store.commit('addProductToCart', productItem);
+        // addToCart(productItem) {
+        //     this.$store.commit('addProductToCart', productItem);
+        // }
+        updateCart({ productItem, quantity, isAdd }) {
+            this.$store.commit('addProductToCart', { productItem, quantity, isAdd });
+        }
+        addToCart() {
+            const order = {
+                productItem: Object.assign({}, this.product),
+                quantity: 1,
+                isAdd: true
+            };
+            this.updateCart(order);
         }
     }
 

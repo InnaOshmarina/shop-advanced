@@ -11,6 +11,7 @@ import { USER_DATA, initialUserState, initialCartState } from "../constants";
 
 Vue.use(Vuex);
 
+// noinspection JSAnnotator
 export default new Vuex.Store({
   state: {
     user: initialUserState,
@@ -58,19 +59,37 @@ export default new Vuex.Store({
     clearLoader(state) {
       state.isLoader = false;
     },
-    addProductToCart(state, productItem) {
+    // addProductToCart(state, productItem) {
+    //   const record = state.cart.added.find(
+    //     Object => Object[".key"] === productItem[".key"]
+    //   );
+    //   if (!record) {
+    //     state.cart.added.push({
+    //       ...productItem,
+    //       quantity: 1
+    //     });
+    //   } else {
+    //     record.quantity++;
+    //   }
+    // },
+    addProductToCart(state, { productItem, quantity, isAdd }) {
       const record = state.cart.added.find(
         Object => Object[".key"] === productItem[".key"]
       );
-      if (!record) {
+      if (record) {
+        if (isAdd) {
+          record.quantity += quantity;
+        } else {
+          record.quantity = quantity;
+        }
+      } else {
         state.cart.added.push({
           ...productItem,
-          quantity: 1
+          quantity
         });
-      } else {
-        record.quantity++;
       }
     },
+
     clearCart(state) {
       state.cart.added = [];
     },
@@ -86,5 +105,9 @@ export default new Vuex.Store({
       removeItemStorage(USER_DATA);
       commit("logout");
     }
+    // addProductToCart({ commit }, { productItem, quantity, isAdd }) {
+    //   commit("addProductToCart", { productItem, quantity, isAdd });
+      // window.console.log(quantity);
+    //}
   }
 });

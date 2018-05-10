@@ -4,9 +4,10 @@
             <td> {{ product.name }}</td>
             <td class="text-center"> {{ product.price }}</td>
             <td class="text-center">
-                <!--<input type="number" min="0" class="form-control text-center"-->
-                       <!--:value="product.quantity"/>-->
-                {{ product.quantity}}
+                <input type="number" min="0" class="form-control text-center"
+                       :value="product.quantity"
+                       @input="updateQuantity"/>
+                <!--{{ product.quantity}}-->
             </td>
             <td class="text-center">{{ subtotal(product) }}</td>
             <td>
@@ -41,6 +42,19 @@
 
         get fullPrice() {
             return this.$store.getters.getFullPrice;
+        }
+
+        updateCart({ productItem, quantity, isAdd }) {
+            this.$store.commit('addProductToCart', { productItem, quantity, isAdd });
+        }
+
+        updateQuantity(event) {
+            let vm = this;
+            this.updateCart({
+                productItem: vm.product,
+                quantity: parseFloat(event.target.value),
+                isAdd: false
+            });
         }
 
         subtotal(product) {
