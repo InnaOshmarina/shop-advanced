@@ -22,6 +22,7 @@ import ProductAdding from "../components/Page/Protected/Product/ProductAdding.vu
 import Statistics from "../components/Page/Protected/Statistics/Statistics.vue";
 import Profile from "../components/Page/Protected/User/Profile.vue";
 import OrderList from "../components/Page/Protected/Order/OrderList.vue";
+import OrderItems from "../components/Page/Protected/Order/OrderItems.vue";
 
 Vue.use(Router);
 
@@ -90,7 +91,8 @@ const router = new Router({
           component: Profile,
           name: "profile"
         },
-        { path: "/order-list", component: OrderList, name: "order-list" }
+        { path: "/order-list", component: OrderList, name: "order-list" },
+        { path: "/order-items", component: OrderItems, name: "order-items" }
       ]
     }
   ]

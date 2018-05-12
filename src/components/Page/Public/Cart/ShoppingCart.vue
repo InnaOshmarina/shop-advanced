@@ -22,15 +22,15 @@
                     <!--<button type="button" class="btn btn-success"-->
                             <!--@click.prevent="placeOrder">Оформить заказ-->
                     <!--</button>-->
-                <div>
-                    <b-btn variant="success"
-                            @click.prevent="placeOrder"
-                              v-b-modal.modal-center>Оформить заказ
-                    </b-btn>
-                    <b-modal id="modal-center" centered title="Оповещение об утверждении заказа">
-                        <p class="my-4">Ваш заказ успешно оформлен!</p>
-                    </b-modal>
-                </div>
+                    <div>
+                        <b-btn variant="success"
+                                @click.prevent="placeOrder"
+                                  v-b-modal.modal-center>Оформить заказ
+                        </b-btn>
+                        <b-modal id="modal-center" centered title="Оповещение об утверждении заказа">
+                            <p class="my-4">Ваш заказ успешно оформлен!</p>
+                        </b-modal>
+                    </div>
             </div>
 
         </div>

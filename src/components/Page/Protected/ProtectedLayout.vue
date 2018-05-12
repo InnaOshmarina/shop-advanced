@@ -60,7 +60,7 @@
 
     .list-group a {
         background-color: rgb(195, 188, 199);
-        &:focus, &.active {
+         &.active {
             color: #000;
             background-color: deepskyblue;
         }
@@ -68,6 +68,5 @@
             color: #000;
             background-color: rgb(125, 190, 119);
         }
-
     }
 </style>

@@ -4,20 +4,15 @@
             <b-col lg="3">
                 <div class="caption-category">Выберите нужную Вам категорию товаров:</div>
                 <b-list-group>
-                    <b-list-group-item>
-                        <router-link :to="{ name: 'product-catalog', params: { key: 'all' } }">
+                    <b-list-group-item :to="{ name: 'product-catalog', params: { key: 'all' } }">
                            Все товары
-                        </router-link>
                     </b-list-group-item>
                 </b-list-group>
 
                 <b-list-group v-for="category in categories" :key="category['.key']">
 
-                    <b-list-group-item>
-                        <router-link :to="{ name: 'product-catalog', params: { key: category['.key'] } }"
-                                     :style= "{ color: activeColor }" @click.prevent="changeColor">
+                    <b-list-group-item :to="{ name: 'product-catalog', params: { key: category['.key'] } }">
                             {{ category.name }}
-                        </router-link>
                     </b-list-group-item>
 
                 </b-list-group>
@@ -49,8 +44,6 @@
     export default class ProductCatalog extends Vue {
         constructor() {
             super();
-            this.activeColor = ''
-
         }
 
         get productsByCategory() {
@@ -61,11 +54,6 @@
             const ourProducts = this.products.filter((Object) => Object.category == ourId);
 
             return ourProducts;
-        }
-
-        changeColor() {
-            this.activeColor = 'red';
-            console.log('inna')
         }
     }
 </script>
@@ -79,9 +67,17 @@
         margin-bottom: 1rem;
         font-weight: 700;
     }
-    /*div .list-group-item a:checked {*/
-        /*color: green;*/
-        /*font-weight: 800;*/
-    /*}*/
+
+    .list-group a {
+        background-color: lightgray;
+        &.active {
+            color: #000;
+            background-color: deepskyblue;
+        }
+        &:hover {
+            color: #000;
+            background-color: rgb(125, 190, 119);
+        }
+    }
 
 </style>
