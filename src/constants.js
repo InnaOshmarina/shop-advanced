@@ -7,7 +7,6 @@ export const initialUserState = {
 };
 
 export const initialCartState = {
-  added: []
+  added: [],
+  fullPrice: 0
 };
-
-

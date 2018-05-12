@@ -17,3 +17,7 @@ export const removeItemStorage = key => {
 export const setItemStorage = (key, data) => {
   window.localStorage.setItem(key, jsonStringify(data));
 };
+
+// export const articles = key => {
+//     window.localStorage.removeItem(key);
+// };

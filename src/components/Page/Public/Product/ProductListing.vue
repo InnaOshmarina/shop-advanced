@@ -11,7 +11,7 @@
                 <b-col lg="3" class="d-flex align-items-end flex-column">
                         <span >{{ product.price}} р.</span>
                         <button type="button" class="btn btn-warning btn-sm mt-auto"
-                                @click.prevent="addToCart">
+                                @click.prevent="addToCart(product)">
                             <i class="fas fa-cart-arrow-down"/>
                             <span>&nbsp;&nbsp;В корзину</span>
                         </button>
@@ -40,9 +40,9 @@
         updateCart({ productItem, quantity, isAdd }) {
             this.$store.commit('addProductToCart', { productItem, quantity, isAdd });
         }
-        addToCart() {
+        addToCart(product) {
             const order = {
-                productItem: Object.assign({}, this.product),
+                productItem: product,
                 quantity: 1,
                 isAdd: true
             };

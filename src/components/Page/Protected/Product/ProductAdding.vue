@@ -88,8 +88,7 @@
                 category: null,
                 name: '',
                 description: '',
-                price: '',
-               // stock: ''
+                price: ''
             }
 
         }
@@ -99,7 +98,6 @@
             this.newProduct.name = '';
             this.newProduct.description = '';
             this.newProduct.price = '';
-            // this.newProduct.stock = ''
         }
 
     }

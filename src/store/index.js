@@ -37,12 +37,7 @@ export default new Vuex.Store({
       return quantities;
     },
     getFullPrice: state => {
-      let fullPrice = 0;
-      state.cart.added.map(
-        productItem =>
-          (fullPrice += parseFloat(productItem.price) * productItem.quantity)
-      );
-      return fullPrice;
+      return state.cart.fullPrice;
     }
   },
 
@@ -59,19 +54,6 @@ export default new Vuex.Store({
     clearLoader(state) {
       state.isLoader = false;
     },
-    // addProductToCart(state, productItem) {
-    //   const record = state.cart.added.find(
-    //     Object => Object[".key"] === productItem[".key"]
-    //   );
-    //   if (!record) {
-    //     state.cart.added.push({
-    //       ...productItem,
-    //       quantity: 1
-    //     });
-    //   } else {
-    //     record.quantity++;
-    //   }
-    // },
     addProductToCart(state, { productItem, quantity, isAdd }) {
       const record = state.cart.added.find(
         Object => Object[".key"] === productItem[".key"]
@@ -88,6 +70,13 @@ export default new Vuex.Store({
           quantity
         });
       }
+
+      let fullPrice = 0;
+      state.cart.added.map(
+        productItem =>
+          (fullPrice += parseFloat(productItem.price) * productItem.quantity)
+      );
+      state.cart.fullPrice = fullPrice;
     },
 
     clearCart(state) {
@@ -107,7 +96,7 @@ export default new Vuex.Store({
     }
     // addProductToCart({ commit }, { productItem, quantity, isAdd }) {
     //   commit("addProductToCart", { productItem, quantity, isAdd });
-      // window.console.log(quantity);
+    // window.console.log(quantity);
     //}
   }
 });

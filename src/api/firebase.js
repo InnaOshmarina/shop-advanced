@@ -12,3 +12,4 @@ const app = initializeApp({
 export const db = app.database();
 export const categoryRef = db.ref("categories");
 export const productRef = db.ref("products");
+export const orderRef = db.ref("orders");

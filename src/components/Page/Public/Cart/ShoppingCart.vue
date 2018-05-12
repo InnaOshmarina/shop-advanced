@@ -14,9 +14,25 @@
                 </thead>
                 <cart-item :products="buyProducts"></cart-item>
              </table>
-            <button type="button" class="btn btn-danger"
-                    @click="deleteOrder">Удалить заказ
-            </button>
+            <div class="d-flex justify-content-around">
+                    <button type="button" class="btn btn-danger"
+                            @click="deleteOrder">Удалить заказ
+                    </button>
+
+                    <!--<button type="button" class="btn btn-success"-->
+                            <!--@click.prevent="placeOrder">Оформить заказ-->
+                    <!--</button>-->
+                <div>
+                    <b-btn variant="success"
+                            @click.prevent="placeOrder"
+                              v-b-modal.modal-center>Оформить заказ
+                    </b-btn>
+                    <b-modal id="modal-center" centered title="Оповещение об утверждении заказа">
+                        <p class="my-4">Ваш заказ успешно оформлен!</p>
+                    </b-modal>
+                </div>
+            </div>
+
         </div>
         <div class="empty" v-else>
             <p>Ваша корзина пуста.</p>
@@ -28,12 +44,17 @@
 <script>
     import Vue from 'vue';
     import Component from 'vue-class-component';
+    import {orderRef} from '../../../../api/firebase';
     import CartItem from './CartItem.vue';
 
+
     @Component({
-      components: {
-          CartItem
-      }
+        firebase: {
+            orders: orderRef
+        },
+        components: {
+            CartItem
+        }
     })
     export default class ShoppingCart extends Vue {
         constructor() {
@@ -46,7 +67,23 @@
         }
         deleteOrder() {
             this.$store.commit('clearCart');
-            // window.location.reload()
+        }
+
+        placeOrder() {
+            let fullPrice = this.$store.getters.getFullPrice;
+            console.log(this.$store.getters.getProduct);
+            let products = this.$store.getters.getProduct.map( obj => {
+                let newObj = {};
+                newObj.name = obj.name;
+                newObj.price = obj.price;
+                newObj.quantity = obj.quantity;
+                return newObj;
+            });
+            orderRef.push({ "fullPrice": fullPrice, "products": products});
+            console.log('inna', orderRef);
+
+            this.$store.commit('clearCart');
+            // alert('Ваш заказ успешно оформлен!');
         }
     }
 </script>

@@ -6,7 +6,7 @@
             <td class="text-center">
                 <input type="number" min="0" class="form-control text-center"
                        :value="product.quantity"
-                       @input="updateQuantity"/>
+                       @input="updateQuantity($event.target.value, product)"/>
                 <!--{{ product.quantity}}-->
             </td>
             <td class="text-center">{{ subtotal(product) }}</td>
@@ -19,8 +19,8 @@
         </tr>
         <tr class="total">
             <td colspan="2" class="text-right">Всего:</td>
-            <td></td>
-            <td class="text-center">{{fullPrice}}</td>
+            <td class="text-center">{{ totalNumbers }}</td>
+            <td class="text-center">{{ fullPrice }}</td>
             <td></td>
         </tr>
     </tbody>
@@ -40,6 +40,10 @@
             super();
         }
 
+        get totalNumbers() {
+            return this.$store.getters.getQuantities;
+        }
+
         get fullPrice() {
             return this.$store.getters.getFullPrice;
         }
@@ -48,11 +52,10 @@
             this.$store.commit('addProductToCart', { productItem, quantity, isAdd });
         }
 
-        updateQuantity(event) {
-            let vm = this;
+        updateQuantity(value, product) {
             this.updateCart({
-                productItem: vm.product,
-                quantity: parseFloat(event.target.value),
+                productItem: product,
+                quantity: parseFloat(value),
                 isAdd: false
             });
         }

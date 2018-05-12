@@ -21,6 +21,7 @@ import ProductList from "../components/Page/Protected/Product/ProductList.vue";
 import ProductAdding from "../components/Page/Protected/Product/ProductAdding.vue";
 import Statistics from "../components/Page/Protected/Statistics/Statistics.vue";
 import Profile from "../components/Page/Protected/User/Profile.vue";
+import OrderList from "../components/Page/Protected/Order/OrderList.vue";
 
 Vue.use(Router);
 
@@ -53,7 +54,11 @@ const router = new Router({
         { path: "/about-us", component: AboutUs, name: "about-us" },
         { path: "/contacts", component: Contacts, name: "contacts" },
         { path: "/contact-form", component: ContactForm, name: "contact-form" },
-        { path: "/shopping-cart", component: ShoppingCart, name: "shopping-cart" }
+        {
+          path: "/shopping-cart",
+          component: ShoppingCart,
+          name: "shopping-cart"
+        }
       ]
     },
     {
@@ -84,7 +89,8 @@ const router = new Router({
           path: "/user-profile",
           component: Profile,
           name: "profile"
-        }
+        },
+        { path: "/order-list", component: OrderList, name: "order-list" }
       ]
     }
   ]

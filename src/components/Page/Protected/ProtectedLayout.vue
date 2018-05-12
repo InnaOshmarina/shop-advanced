@@ -10,6 +10,7 @@
                         <b-list-group-item :to="{ name: 'dashboard-list' }" >Панель инструментов</b-list-group-item>
                         <b-list-group-item :to="{ name: 'category-list' }">Категории товаров</b-list-group-item>
                         <b-list-group-item :to="{ name: 'product-list' }">Товары</b-list-group-item>
+                        <b-list-group-item :to="{ name: 'order-list' }">Заказы</b-list-group-item>
                         <b-list-group-item :to="{ name: 'statistics' }">Статистика</b-list-group-item>
 
                     </b-list-group>
