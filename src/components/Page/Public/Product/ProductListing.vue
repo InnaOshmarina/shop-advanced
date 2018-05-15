@@ -34,9 +34,7 @@
         constructor() {
             super();
         }
-        // addToCart(productItem) {
-        //     this.$store.commit('addProductToCart', productItem);
-        // }
+
         updateCart({ productItem, quantity, isAdd }) {
             this.$store.commit('addProductToCart', { productItem, quantity, isAdd });
         }

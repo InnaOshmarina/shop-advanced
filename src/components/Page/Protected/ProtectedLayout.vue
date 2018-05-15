@@ -55,18 +55,25 @@
         flex: 1 0 auto;
     }
     .col-lg-3 {
-        background-color: rgb(195, 188, 199)
+        padding: 1.07rem;
+        background-color: rgb(94, 91, 94);
+        border-radius: 0.625rem;
+        box-shadow: 2px 2px 6px 1px rgb(3, 83, 3);
     }
 
     .list-group a {
-        background-color: rgb(195, 188, 199);
+        background-color: rgb(94, 91, 94);
+        color: #fff;
          &.active {
-            color: #000;
-            background-color: deepskyblue;
+            color: #fff;
+            background-color: rgb(49, 48, 49);
+            border-radius: 0.625rem;
+            border: none;
         }
         &:hover {
-            color: #000;
-            background-color: rgb(125, 190, 119);
+            color: #fff;
+            background-color: rgb(3, 83, 3);
+            border-radius: 0.625rem;
         }
     }
 </style>

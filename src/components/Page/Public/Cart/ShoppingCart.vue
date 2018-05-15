@@ -5,11 +5,11 @@
             <table class="table mb-5">
                 <thead>
                     <tr class="header text-center">
-                        <th style="width:40%">Товар</th>
+                        <th style="width:47%">Товар</th>
                         <th style="width:20%">Цена, руб.</th>
                         <th style="width:8%">Количество</th>
-                        <th style="width:22%">Сумма, руб.</th>
-                        <th style="width:10%"></th>
+                        <th style="width:20%">Сумма, руб.</th>
+                        <th style="width:5%"></th>
                     </tr>
                 </thead>
                 <cart-item :products="buyProducts"></cart-item>
@@ -19,18 +19,10 @@
                             @click="deleteOrder">Удалить заказ
                     </button>
 
-                    <!--<button type="button" class="btn btn-success"-->
-                            <!--@click.prevent="placeOrder">Оформить заказ-->
-                    <!--</button>-->
-                    <div>
-                        <b-btn variant="success"
-                                @click.prevent="placeOrder"
-                                  v-b-modal.modal-center>Оформить заказ
-                        </b-btn>
-                        <b-modal id="modal-center" centered title="Оповещение об утверждении заказа">
-                            <p class="my-4">Ваш заказ успешно оформлен!</p>
-                        </b-modal>
-                    </div>
+                    <button type="button" class="btn btn-success"
+                            @click.prevent="placeOrder">Оформить заказ
+                    </button>
+
             </div>
 
         </div>
@@ -73,17 +65,22 @@
             let fullPrice = this.$store.getters.getFullPrice;
             console.log(this.$store.getters.getProduct);
             let products = this.$store.getters.getProduct.map( obj => {
-                let newObj = {};
-                newObj.name = obj.name;
-                newObj.price = obj.price;
-                newObj.quantity = obj.quantity;
+                let newObj = {
+                    name: obj.name,
+                    price: obj.price,
+                    quantity: obj.quantity
+                };
                 return newObj;
             });
             orderRef.push({ "fullPrice": fullPrice, "products": products});
             console.log('inna', orderRef);
 
             this.$store.commit('clearCart');
-            // alert('Ваш заказ успешно оформлен!');
+            this.$notify({
+                group: 'foo',
+                title: 'Системное уведомление',
+                text: 'Ваш заказ уже в обработке!'
+            });
         }
     }
 </script>
@@ -99,10 +96,13 @@
     }
     h3 {
         text-align: center;
-        margin: 2rem 0 2rem 0;
+        margin-bottom: 2rem;
     }
     .header {
         font-size: 1rem;
+    }
+    .btn-danger, .btn-success {
+        box-shadow: 2px 2px 3px 1px rgb(65, 63, 66);
     }
 
 </style>

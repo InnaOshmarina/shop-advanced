@@ -1,6 +1,7 @@
 <template>
   <div id="app">
     <router-view/>
+    <notifications group="foo" position="top center"/>
   </div>
 </template>
 
@@ -14,5 +15,10 @@
     font-family: "Open Sans", Arial, Helvetica, Verdana, sans-serif;
   }
 
-
+  .vue-notification {
+    padding: 1.1rem;
+    margin-top: 3rem;
+    font-size: 1.25rem;
+    width: 31.25rem;
+  }
 </style>

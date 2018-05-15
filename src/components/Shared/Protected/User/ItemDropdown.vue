@@ -1,13 +1,17 @@
 <template>
     <div class="item-dropdown">
-        <b-dropdown variant="link" size="lg" right no-caret >
+        <b-dropdown variant="link" size="lg" right no-caret>
             <template slot="button-content">
                 <i class="fas fa-user"></i> <span>{{currentUser}}</span>
             </template>
 
             <b-dropdown-item>
-                <router-link :to="{ name: 'profile' }">Мой профиль</router-link></b-dropdown-item>
-            <b-dropdown-item href="#" @click="onLogout">Выход</b-dropdown-item>
+                <router-link :to="{ name: 'profile' }">Мой профиль</router-link>
+            </b-dropdown-item>
+            <!-- <b-dropdown-item href="#" @click="onLogout">Выход</b-dropdown-item> -->
+             <b-dropdown-item>
+                <router-link @click="onLogout" :to="{ name: 'sign-in' }">Выход</router-link>
+            </b-dropdown-item>
         </b-dropdown>
     </div>
 </template>
@@ -31,7 +35,7 @@
 
         onLogout () {
             this.$store.dispatch('logout');
-            this.$router.push('/sign-in')
+            // this.$router.push('/sign-in')
         }
 
     }
@@ -42,26 +46,25 @@
 
     .dropdown svg{
         font-size: 0.9rem;
-        color: #000;
+        color: #fff;
     }
     .dropdown span {
         padding-left: 0.6rem;
         font-size: 0.9rem;
-        color: #000;
+        color: #fff;
         &:hover {
-            color: #000;
+            color: #fff;
         }
     }
 
-    .dropdown-menu a {
-        text-decoration: none;
+   a.dropdown-item a {
         color: #000;
-        /*margin-right: 1rem;*/
+        text-decoration: none;
     }
 
-    .dropdown-menu .dropdown-item:active {
-        background-color: #aff0be;
+    .dropdown-menu a.dropdown-item:active {
+     background-color: rgb(186, 243, 186);
     }
-
+    
 </style>
 

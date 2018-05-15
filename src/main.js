@@ -9,10 +9,12 @@ import VueFire from 'vuefire';
 import VueCharts from 'vue-chartjs';
 import store from "./store";
 import "./registerServiceWorker";
+import Notifications from 'vue-notification';
 
 Vue.use(BootstrapVue);
 Vue.use(VueFire);
 Vue.use(VueCharts);
+Vue.use(Notifications);
 
 Vue.config.productionTip = false;
 

@@ -59,25 +59,34 @@
 </script>
 
 <style lang="scss" scoped>
-    div .col-lg-3 {
-        background-color: lightgray;
-    }
-    div.caption-category {
-        font-size: 0.8rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
+   .col-lg-3 {
+        padding: 1.07rem;
+        border-radius: 0.625rem;
+        border: 0.1rem solid rgb(203, 221, 212);
+        box-shadow: 2px 2px 6px 1px rgb(228, 236, 248);
     }
 
-    .list-group a {
-        background-color: lightgray;
-        &.active {
-            color: #000;
-            background-color: deepskyblue;
-        }
-        &:hover {
-            color: #000;
-            background-color: rgb(125, 190, 119);
-        }
+    div.caption-category {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        font-weight: 500;
+        line-height: 1.25rem;
     }
+
+    .list-group a:hover {
+        color: #000;
+        background-color: rgb(228, 236, 248);
+    }
+
+    .list-group a.active {
+        color: #000;
+        background-color: rgb(203, 221, 212);
+        border-bottom-color: rgb(203, 221, 212);
+    }
+    a.list-group-item {
+        border-width: 0 0 0.062125rem 0;
+    }
+    
+    
 
 </style>

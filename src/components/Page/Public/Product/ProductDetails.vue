@@ -30,7 +30,6 @@
 
         get detailsOfProduct() {
             let ourProduct;
-
             // делаем проверку, что массив с продуктами не пустой
             if (this.products.length > 0) {
                 const ourKey = this.$route.params.product_key;

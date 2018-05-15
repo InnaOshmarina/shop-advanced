@@ -94,9 +94,5 @@ export default new Vuex.Store({
       removeItemStorage(USER_DATA);
       commit("logout");
     }
-    // addProductToCart({ commit }, { productItem, quantity, isAdd }) {
-    //   commit("addProductToCart", { productItem, quantity, isAdd });
-    // window.console.log(quantity);
-    //}
   }
 });

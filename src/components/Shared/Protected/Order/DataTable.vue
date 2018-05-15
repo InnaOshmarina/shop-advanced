@@ -14,7 +14,7 @@
                     <td>{{ item[".key"] }}</td>
                     <td class="text-right">{{ item.fullPrice }}</td>
                     <td class="text-center">
-                        <router-link :to="{ name: 'order-items' }">
+                        <router-link :to="{ name: 'order-detail', params: { order_key: item['.key'] } }">
                             <button type="button" class="btn btn-light"><i class="fas fa-eye"/></button>
                         </router-link>
                     </td>
@@ -29,7 +29,6 @@
     import Vue from 'vue';
     import Component from 'vue-class-component';
 
-
     @Component({
         props: ['items']
     })
@@ -38,7 +37,6 @@
             super();
         }
     }
-
 
 </script>
 

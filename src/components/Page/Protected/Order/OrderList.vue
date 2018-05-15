@@ -8,7 +8,7 @@
     import Vue from 'vue';
     import Component from 'vue-class-component';
     import {orderRef} from '../../../../api/firebase';
-    import DataTable from '../../../Shared/DataTable.vue'
+    import DataTable from '../../../Shared/Protected/Order/DataTable.vue';
 
 
     @Component({
